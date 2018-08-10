@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
 import {
   withStyles,
   Menu,
@@ -11,6 +12,11 @@ import {
   Typography,
   Toolbar,
   AppBar,
+  Hidden,
+  Drawer,
+  List,
+  ListItem,
+  IconButton,
 } from '@material-ui/core';
 import { fetchTitle } from '../../reducers/App/app';
 import headerStyle from '../../assets/jss/components/headerStyle';
@@ -22,6 +28,7 @@ class Header extends Component {
     super(props);
     this.state = {
       anchorEl: null,
+      open: false,
     };
   }
 
@@ -30,11 +37,11 @@ class Header extends Component {
   };
 
   handleClose = () => {
-    this.setState({ anchorEl: null });
+    this.setState({ anchorEl: null, open: false });
   };
 
   render() {
-    const { anchorEl } = this.state;
+    const { anchorEl, open } = this.state;
     const { classes, location } = this.props;
     return (
       <div className={classes.root}>
@@ -44,6 +51,81 @@ class Header extends Component {
             <Typography variant="title" color="inherit" className={classes.flex}>
               &nbsp;Islab
             </Typography>
+            <Hidden mdDown>
+              {
+                headers.map((h, index) => {
+                  let w = location.pathname.indexOf(h.title.toLowerCase()) > -1;
+                  if (location.pathname === '/' && h.title === 'Home') w = true;
+                  if (h.title === 'People') {
+                    if (location.pathname === '/members') w = true;
+                    if (location.pathname === '/alumni') w = true;
+                  }
+                  return (
+                    h.dropDown ? (
+                      <div key={index}>
+                        <Button
+                          aria-owns={anchorEl ? 'simple-menu' : null}
+                          aria-haspopup="true"
+                          style={{
+                            color: w ? '#9ca2ad' : 'inherit'
+                          }}
+                          onClick={this.handleClick}
+                        >
+                          {h.title}
+                        </Button>
+                        <Menu
+                          id="simple-menu"
+                          anchorEl={anchorEl}
+                          open={Boolean(anchorEl)}
+                          onClose={this.handleClose}
+                        >
+                          {
+                            h.pages.map((p, index2) => (
+                              <Link key={index2} to={p.url} className={classes.navLink}>
+                                <MenuItem onClick={this.handleClose}>
+                                  {p.title}
+                                </MenuItem>
+                              </Link>
+                            ))
+                          }
+                        </Menu>
+                      </div>
+                    ) : (
+                      <Link key={index} to={h.url} className={classes.navLink}>
+                        <Button
+                          style={{
+                            color: w ? '#9ca2ad' : 'inherit'
+                          }}
+                        >
+                          {h.title}
+                        </Button>
+                      </Link>
+                    )
+                  )
+                })
+              }
+            </Hidden>
+            <Hidden mdUp>
+              <IconButton
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="Menu"
+                onClick={() => this.setState({ open: !open })}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="persistent"
+          anchor="left"
+          open={open}
+          classes={{
+            paper: 'drawerPaper',
+          }}
+        >
+          <List component="nav">
             {
               headers.map((h, index) => {
                 let w = location.pathname.indexOf(h.title.toLowerCase()) > -1;
@@ -54,7 +136,7 @@ class Header extends Component {
                 }
                 return (
                   h.dropDown ? (
-                    <div key={index}>
+                    <ListItem key={index}>
                       <Button
                         aria-owns={anchorEl ? 'simple-menu' : null}
                         aria-haspopup="true"
@@ -81,23 +163,26 @@ class Header extends Component {
                           ))
                         }
                       </Menu>
-                    </div>
+                    </ListItem>
                   ) : (
-                    <Link key={index} to={h.url} className={classes.navLink}>
-                      <Button
-                        style={{
-                          color: w ? '#9ca2ad' : 'inherit'
-                        }}
-                      >
-                        {h.title}
-                      </Button>
-                    </Link>
+                    <ListItem key={index}>
+                      <Link to={h.url} className={classes.navLink}>
+                        <Button
+                          style={{
+                            color: w ? '#9ca2ad' : 'inherit'
+                          }}
+                          onClick={() => this.setState({ open: !open })}
+                        >
+                          {h.title}
+                        </Button>
+                      </Link>
+                    </ListItem>
                   )
                 )
               })
             }
-          </Toolbar>
-        </AppBar>
+          </List>
+        </Drawer>
       </div>
     );
   }

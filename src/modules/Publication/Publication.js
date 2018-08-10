@@ -27,13 +27,12 @@ class Publication extends Component {
       <div className={classes.pageContainer}>
         <Grid
           container
-          spacing={24}
           direction="row"
           justify="center"
           alignItems="center"
         >
-          <Grid item xs={8}>
-            <Paper className={classes.paperPadding} elevation={8}>
+          <Grid item md={8} xs={10}>
+            <Paper className={classes.paperPadding} style={{ overflowX: 'scroll' }} elevation={8}>
               <Typography variant='headline' gutterBottom paragraph>
                 PUBLICATION
               </Typography>
