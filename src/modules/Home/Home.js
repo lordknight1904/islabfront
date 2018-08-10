@@ -28,7 +28,6 @@ class Home extends Component {
           <Grid item md={8} xs={10}>
             <Paper className={classes.paperPadding}>
               <Grid container>
-
                 <Hidden mdUp>
                   <Grid item md={4} className={classes.imgWrap}>
                     <img src={homeBshim} alt='loading' />
@@ -102,7 +101,7 @@ class Home extends Component {
                   </Grid>
                 </Hidden>
                 <Grid item md={12} style={{ marginTop: '20px' }}>
-                  <Typography variant='subheading' gutterBottom paragraph>
+                  <Typography variant='subheading' gutterBottom paragraph align='justify'>
                     {professor.description}
                   </Typography>
                   <Typography variant='subheading' gutterBottom paragraph>
