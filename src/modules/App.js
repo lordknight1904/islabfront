@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header/Header';
+import Footer from './Header/Footer';
 import CustomHelmet from './CustomHelmet/CustomHelmet';
 import paths from './paths';
 import { fetchConference, fetchJournal, fetchGraduated, fetchMember, fetchSubject } from '../reducers/App/app';
@@ -33,6 +34,7 @@ class App extends Component {
             ))
           }
         </Switch>
+        <Footer />
       </div>
     );
   }
