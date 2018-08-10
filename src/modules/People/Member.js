@@ -57,16 +57,16 @@ class Member extends Component {
                         </TableCell>
                         <TableCell style={{ width: '40%' }}>
                           <div>
-                          <a href={`mailto:${mem.email}`}>
-                            {mem.name}
-                          </a>
-                          {
-                            mem.profilePage !== '' ? (
-                              <a href={mem.profilePage} target="_blank">
-                                &nbsp;&nbsp;[homepage]
-                              </a>
-                            ) : null
-                          }
+                            <a href={`mailto:${mem.email}`}>
+                              {mem.name}
+                            </a>
+                            {
+                              mem.profilePage !== '' ? (
+                                <a href={mem.profilePage} target="_blank">
+                                  &nbsp;&nbsp;[homepage]
+                                </a>
+                              ) : null
+                            }
                           </div>
                           <div>
                             {`[${mem.field}]`}
