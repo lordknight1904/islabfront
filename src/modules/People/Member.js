@@ -56,6 +56,7 @@ class Member extends Component {
                           />
                         </TableCell>
                         <TableCell style={{ width: '40%' }}>
+                          <div>
                           <a href={`mailto:${mem.email}`}>
                             {mem.name}
                           </a>
@@ -66,6 +67,10 @@ class Member extends Component {
                               </a>
                             ) : null
                           }
+                          </div>
+                          <div>
+                            {`[${mem.field}]`}
+                          </div>
                         </TableCell>
                       </TableRow>
                     ))
