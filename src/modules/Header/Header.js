@@ -51,7 +51,7 @@ class Header extends Component {
             <Typography variant="title" color="inherit" className={classes.flex}>
               &nbsp;Islab
             </Typography>
-            <Hidden mdDown>
+            <Hidden smDown>
               {
                 headers.map((h, index) => {
                   let w = location.pathname.indexOf(h.title.toLowerCase()) > -1;
