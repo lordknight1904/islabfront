@@ -29,11 +29,10 @@ const headerStyle = theme => ({
     margin: '0',
     "& img": {
       display: 'block',
-      top: '50%',
-      left: '50%',
-      minHeight: '100%',
-      minWidth: '100%',
-      transform: 'translate(-50 %, -50 %)',
+      width: '100%',
+      height: 'auto',
+      // minHeight: '100%',
+      // minWidth: '100%',
     }
   },
 

@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchTitle, setHelmet } from '../../reducers/App/app';
-import { withStyles, Paper, Grid, Typography, Hidden } from '@material-ui/core';
+import {connect} from 'react-redux';
+import {fetchTitle, setHelmet} from '../../reducers/App/app';
+import {withStyles, Paper, Grid, Typography, Hidden} from '@material-ui/core';
 import homeStyle from "../../assets/jss/components/homeStyle";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import homeBshim from '../../../src/assets/images/homeBshim.jpg';
 import professor from '../../data/professor';
 
 class Home extends Component {
   componentDidMount() {
-    const { app } = this.props;
+    const {app} = this.props;
     this.props.setHelmet(app.appName, app.appName);
   }
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
     return (
       <div className={classes.pageContainer}>
         <Grid
@@ -28,11 +28,11 @@ class Home extends Component {
           <Grid item md={8} xs={10}>
             <Paper className={classes.paperPadding}>
               <Grid container>
-                <Hidden mdUp>
+                <Hidden only={['lg', 'xl', 'md']}>
                   <Grid item md={4} className={classes.imgWrap}>
-                    <img src={homeBshim} alt='loading' />
+                    <img src={homeBshim} alt='loading' width="300" height="400"/>
                   </Grid>
-                  <Grid item md={8}>
+                  <Grid item md={8} style={{paddingLeft: '20px'}}>
                     <Typography variant='headline' gutterBottom paragraph>
                       {professor.name}
                     </Typography>
@@ -64,7 +64,7 @@ class Home extends Component {
                     </Typography>
                   </Grid>
                 </Hidden>
-                <Hidden mdDown>
+                <Hidden only={['xs', 'sm']}>
                   <Grid item md={8}>
                     <Typography variant='headline' gutterBottom paragraph>
                       {professor.name}
@@ -97,10 +97,10 @@ class Home extends Component {
                     </Typography>
                   </Grid>
                   <Grid item md={4} className={classes.imgWrap}>
-                    <img src={homeBshim} alt='loading' />
+                    <img src={homeBshim} alt='loading' width="300" height="400"/>
                   </Grid>
                 </Hidden>
-                <Grid item md={12} style={{ marginTop: '20px' }}>
+                <Grid item md={12} style={{marginTop: '20px'}}>
                   <Typography variant='subheading' gutterBottom paragraph align='justify'>
                     {professor.description}
                   </Typography>
@@ -124,7 +124,7 @@ Home.propTypes = {
   setHelmet: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ app }) => ({
+const mapStateToProps = ({app}) => ({
   app,
 });
 const mapDispatchToProps = dispatch =>
