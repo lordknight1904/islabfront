@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: 'rgba(109,58,0,0.08)', minHeight: '100vh' }}>
+      <div style={{ backgroundColor: 'rgba(109,58,0,0.08)' }}>
         <CustomHelmet />
         <Header key="header" />
         <Switch key="switch">

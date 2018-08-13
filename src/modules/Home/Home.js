@@ -18,7 +18,7 @@ class Home extends Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className={classes.pageContainer}>
+      <div className={classes.pageContainer} style={{ minHeight: 'calc(100vh - 184px)' }}>
         <Grid
           container
           direction="row"

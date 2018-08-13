@@ -6,7 +6,8 @@ const pageContainer = {
   marginTop: '30px',
 };
 const paperPadding = {
-  padding: '20px'
+  padding: '20px',
+  marginBottom: '40px',
 };
 const container = {
   paddingRight: "15px",

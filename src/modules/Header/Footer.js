@@ -10,7 +10,9 @@ function Footer({ ...props }) {
       container
       justify="center"
       alignItems="center"
-      style={{ background: `#222` }}
+      style={{
+        background: `#222`,
+      }}
     >
       <Grid item md={10} sm={10} xs={10} lg={10} xl={10} style={{ paddingTop: '15px', paddingBottom: '15px' }}>
         <Typography variant='body1' align='center' style={{ color: '#636363'}}>
