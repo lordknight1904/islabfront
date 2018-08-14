@@ -129,7 +129,7 @@ class Publication extends Component {
 
               <Table
                 tableHeaderColor="primary"
-                tableHead={["Id", "Authors", "Name", ""]}
+                tableHead={["Id", "Authors", "Title", ""]}
                 loading={false}
                 tableData={data}
                 page={app.publicationCurrentPage}
