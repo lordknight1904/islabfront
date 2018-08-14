@@ -26,7 +26,7 @@ class Teaching extends Component {
   render() {
     const { classes, app } = this.props;
     return (
-      <div className={classes.pageContainer}>
+      <div className={classes.pageContainer} style={{ minHeight: 'calc(100vh - 184px)' }}>
         <Grid
           container
           direction="row"
@@ -34,7 +34,7 @@ class Teaching extends Component {
           alignItems="center"
         >
           <Grid item md={8} xs={10}>
-            <Paper className={classes.paperPadding} style={{ overflowX: 'scroll' }} elevation={8}>
+            <Paper className={classes.paperPadding} style={{ overflowX: 'auto' }} elevation={8}>
               <Typography variant='headline' gutterBottom paragraph>
                 TEACHING
               </Typography>
