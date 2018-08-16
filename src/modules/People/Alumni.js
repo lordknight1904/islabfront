@@ -40,10 +40,10 @@ class Alumni extends Component {
                 <TableBody>
                   {
                     app.alumni.map((al, index) => (
-                      <TableRow key={index}>
-                        <TableCell style={{ width: '40%' }}>{al.name}</TableCell>
-                        <TableCell style={{ width: '30%' }}>{`${al.title} (${al.year})`}</TableCell>
-                        <TableCell style={{ width: '30%' }}>{al.occupation}</TableCell>
+                      <TableRow key={index} hover>
+                        <TableCell style={{ width: '40%', textAlign: 'right' }}>{al.name}</TableCell>
+                        <TableCell style={{ width: '20%', textAlign: 'center' }}>{`${al.title} (${al.year})`}</TableCell>
+                        <TableCell style={{ width: '40%', textAlign: 'left' }}>{al.occupation}</TableCell>
                       </TableRow>
                     ))
                   }

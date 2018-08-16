@@ -45,17 +45,17 @@ class Member extends Component {
                   {
                     app.member.map((mem, index) => (
                       <TableRow key={index}>
-                        <TableCell style={{ width: '60%', textAlign: 'center' }}>
+                        <TableCell style={{ width: '50%', textAlign: 'right', padding: '4px 10px' }}>
                           <img
                             src={mem.imagePath}
                             style={{
-                              height: '100px',
-                              width: '80px',
+                              height: '125px',
+                              width: '100px',
                             }}
                             alt="member"
                           />
                         </TableCell>
-                        <TableCell style={{ width: '40%' }}>
+                        <TableCell style={{ width: '50%', textAlign: 'left', padding: '4px 10px' }}>
                           <div>
                             <a href={`mailto:${mem.email}`}>
                               {mem.name}

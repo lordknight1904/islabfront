@@ -25,20 +25,26 @@ const headers = [
   },
   {
     title: 'People',
-    dropDown: true,
-    pages: [
-      {
-        title: 'Members',
-        pageDescription: 'Members',
-        url: '/members'
-      },
-      {
-        title: 'Alumni',
-        pageDescription: 'Alumni',
-        url: '/alumni'
-      },
-    ]
+    pageDescription: 'People',
+    dropDown: false,
+    url: '/people'
   },
+  // {
+  //   title: 'People',
+  //   dropDown: true,
+  //   pages: [
+  //     {
+  //       title: 'Members',
+  //       pageDescription: 'Members',
+  //       url: '/members'
+  //     },
+  //     {
+  //       title: 'Alumni',
+  //       pageDescription: 'Alumni',
+  //       url: '/alumni'
+  //     },
+  //   ]
+  // },
 ];
 
 export default headers;

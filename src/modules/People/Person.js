@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import logo from '../../images/banner.jpg';
 import { fetchTitle, setHelmet } from '../../reducers/App/app';
-import { withStyles, Paper, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import personStyle from "../../assets/jss/components/personStyle";
 import { withRouter } from "react-router-dom";
+import Member from './Member';
+import Alumni from './Alumni';
 
 class Person extends Component {
   componentDidMount() {
@@ -17,7 +18,8 @@ class Person extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.pageContainer}>
-        alumni
+        <Member />
+        <Alumni />
       </div>
     );
   }

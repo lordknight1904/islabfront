@@ -3,8 +3,9 @@ import BiographyPage from './Biography/Biography';
 import TeachingPage from './Teaching/Teaching';
 import DetailPage from './Teaching/Detail';
 import PublicationPage from './Publication/Publication';
-import AlumniPage from './People/Alumni';
-import MemberPage from './People/Member';
+// import AlumniPage from './People/Alumni';
+// import MemberPage from './People/Member';
+import PersonPage from './People/Person';
 
 const paths = [
   {
@@ -43,19 +44,26 @@ const paths = [
     exact: false,
   },
   {
-    title: 'Members',
-    pageDescription: 'Members',
-    url: '/members',
-    component: MemberPage,
+    title: 'People',
+    pageDescription: 'People',
+    url: '/people',
+    component: PersonPage,
     exact: false,
   },
-  {
-    title: 'Alumni',
-    pageDescription: 'Alumni',
-    url: '/alumni',
-    component: AlumniPage,
-    exact: false,
-  },
+  // {
+  //   title: 'Members',
+  //   pageDescription: 'Members',
+  //   url: '/members',
+  //   component: MemberPage,
+  //   exact: false,
+  // },
+  // {
+  //   title: 'Alumni',
+  //   pageDescription: 'Alumni',
+  //   url: '/alumni',
+  //   component: AlumniPage,
+  //   exact: false,
+  // },
 ];
 
 export default paths;

@@ -10,10 +10,14 @@ import {
   Typography,
   Tabs,
   Tab,
+  Table,
+  TableRow,
+  TableCell, TableBody, TableHead,
 } from '@material-ui/core';
-import Table from '../../components/Table/Table';
+// import Table from '../../components/Table/Table';
 import publicationStyle from "../../assets/jss/components/publicationStyle";
 import {withRouter} from "react-router-dom";
+// import {FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage} from "@material-ui/icons";
 
 // import Row from './Row';
 
@@ -26,36 +30,13 @@ class Publication extends Component {
     console.log(value);
     this.setState({type: value});
   };
-  handleChangePublicationPage = (event, page) => {
-    this.props.setPublicationCurrentPage(page);
-  };
-  handleChangePublicationRowsPerPage = event => {
-    this.setState({rowsPerPage: event.target.value});
-  };
-  handleFirstPublicationPageButtonClick = event => {
-    this.handleChangePublicationPage(event, 0);
-  };
-  handleLastPublicationPageButtonClick = event => {
-    const {app} = this.props;
-    const {rowsPerPage, type} = this.state;
-    this.handleChangePublicationPage(
-      event,
-      Math.max(0, Math.ceil(type === 0 ? app.journal.length / rowsPerPage : app.conference.length / rowsPerPage) - 1),
-    );
-  };
-  handlePublicationBackButtonClick = event => {
-    this.handleChangePublicationPage(event, this.props.page - 1);
-  };
-  handlePublicationNextButtonClick = event => {
-    this.handleChangePublicationPage(event, this.props.page + 1);
-  };
   decodePublished = (paper) => {
     switch (paper.published) {
       case '0': {
         return 'Submitted to ';
       }
       case '1': {
-        return 'Accepted to ';
+        return 'To appear in ';
       }
       default:
         return '';
@@ -93,7 +74,7 @@ class Publication extends Component {
         ]
       });
     return (
-      <div className={classes.pageContainer} style={{ minHeight: 'calc(100vh - 184px)' }}>
+      <div className={classes.pageContainer} style={{minHeight: 'calc(100vh - 184px)'}}>
         <Grid
           container
           direction="row"
@@ -118,6 +99,9 @@ class Publication extends Component {
               <Tabs
                 value={type}
                 onChange={this.handleChange}
+                style={{
+                  marginBottom: '10px'
+                }}
               >
                 <Tab
                   label="Journal"
@@ -127,20 +111,43 @@ class Publication extends Component {
                 />
               </Tabs>
 
-              <Table
-                tableHeaderColor="primary"
-                tableHead={["Id", "Authors", "Title", ""]}
-                loading={false}
-                tableData={data}
-                page={app.publicationCurrentPage}
-                rowsPerPage={this.state.rowsPerPage}
-                handleChangePage={this.handleChangePublicationPage}
-                handleChangeRowsPerPage={this.handleChangePublicationRowsPerPage}
-                handleFirstPageButtonClick={this.handleFirstPublicationPageButtonClick}
-                handleBackButtonClick={this.handlePublicationBackButtonClick}
-                handleNextButtonClick={this.handlePublicationNextButtonClick}
-                handleLastPageButtonClick={this.handleLastPublicationPageButtonClick}
-              />
+              <Table className={classes.table}>
+                <TableHead className={classes["primary" + "TableHeader"]}>
+                  <TableRow>
+                    {
+                      ["Id", "Authors", "Title", ""].map((prop, key) => {
+                        return (
+                          <TableCell
+                            className={classes.tableCell + " " + classes.tableHeadCell}
+                            key={key}
+                          >
+                            {prop}
+                          </TableCell>
+                        );
+                      })
+                    }
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {
+                    data
+                      .map((pr, key) => {
+                        return (
+                          <TableRow key={key} hover>
+                            {pr.map((prop, key2) => {
+                              return (
+                                <TableCell className={classes.tableCell} key={key2}>
+                                  {prop}
+                                </TableCell>
+                              );
+                            })}
+                          </TableRow>
+                        );
+                      })
+                  }
+                </TableBody>
+              </Table>
+
             </Paper>
           </Grid>
         </Grid>
