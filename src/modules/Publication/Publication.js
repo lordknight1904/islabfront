@@ -57,20 +57,20 @@ class Publication extends Component {
         const str2 = paper.submittedTo;
         const str3 = paper.detail ? `, ${paper.detail}` : '';
         return [
-          (index + 1).toString(),
-          paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1),
-          paper.name,
-          str1 + str2 + str3,
+          {name: (index + 1).toString()},
+          {name: paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1)},
+          {name: paper.name, pdfPath: paper.pdfPath,},
+          {name: str1 + str2 + str3},
         ]
       }) : app.conference.map((paper, index) => {
         const str1 = this.decodePublished(paper);
         const str2 = paper.submittedTo;
         const str3 = paper.detail ? `, ${paper.detail}` : '';
         return [
-          (index + 1).toString(),
-          paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1),
-          paper.name,
-          str1 + str2 + str3,
+          {name: (index + 1).toString()},
+          {name: paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1)},
+          {name: paper.name, pdfPath: paper.pdfPath,},
+          {name: str1 + str2 + str3},
         ]
       });
     return (
@@ -137,7 +137,15 @@ class Publication extends Component {
                             {pr.map((prop, key2) => {
                               return (
                                 <TableCell className={classes.tableCell} key={key2}>
-                                  {prop}
+                                  {
+                                    prop.pdfPath !== '' ? (
+                                      <a href={prop.pdfPath} target="_blank">
+                                        {prop.name}
+                                      </a>
+                                    ) : (
+                                      prop.name
+                                    )
+                                  }
                                 </TableCell>
                               );
                             })}
