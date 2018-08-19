@@ -34,8 +34,8 @@ class Member extends Component {
         >
           <Grid item md={8} xs={10}>
             <Paper className={classes.paperPadding} style={{ overflowX: 'auto' }} elevation={8}>
-              <Typography variant='title' gutterBottom paragraph>
-                MEMBER
+              <Typography variant='headline' gutterBottom paragraph>
+                Members
               </Typography>
               <Typography variant='subheading' gutterBottom paragraph>
                 Members of Information System Laboratory
@@ -45,7 +45,7 @@ class Member extends Component {
                   {
                     app.member.map((mem, index) => (
                       <TableRow key={index}>
-                        <TableCell style={{ width: '50%', textAlign: 'right', padding: '4px 10px' }}>
+                        <TableCell style={{ width: '20%', textAlign: 'center', padding: '4px 10px' }}>
                           <img
                             src={mem.imagePath}
                             style={{
@@ -55,7 +55,7 @@ class Member extends Component {
                             alt="member"
                           />
                         </TableCell>
-                        <TableCell style={{ width: '50%', textAlign: 'left', padding: '4px 10px' }}>
+                        <TableCell style={{ width: '80%', textAlign: 'left', padding: '4px 10px' }}>
                           <div>
                             <a href={`mailto:${mem.email}`}>
                               {mem.name}

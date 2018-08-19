@@ -33,17 +33,17 @@ class Alumni extends Component {
         >
           <Grid item md={8} xs={10}>
             <Paper className={classes.paperPadding} style={{ overflowX: 'auto' }} elevation={8}>
-              <Typography variant='title' gutterBottom paragraph>
-                ALUMNI
+              <Typography variant='headline' gutterBottom paragraph>
+                Alumni
               </Typography>
               <Table className={classes.table}>
                 <TableBody>
                   {
                     app.alumni.map((al, index) => (
                       <TableRow key={index} hover>
-                        <TableCell style={{ width: '40%', textAlign: 'right' }}>{al.name}</TableCell>
+                        <TableCell style={{ width: '20%', textAlign: 'left' }}>{al.name}</TableCell>
                         <TableCell style={{ width: '20%', textAlign: 'center' }}>{`${al.title} (${al.year})`}</TableCell>
-                        <TableCell style={{ width: '40%', textAlign: 'left' }}>{al.occupation}</TableCell>
+                        <TableCell style={{ width: '60%', textAlign: 'left' }}>{al.occupation}</TableCell>
                       </TableRow>
                     ))
                   }

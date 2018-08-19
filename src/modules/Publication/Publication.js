@@ -57,7 +57,7 @@ class Publication extends Component {
         const str2 = paper.submittedTo;
         const str3 = paper.detail ? `, ${paper.detail}` : '';
         return [
-          {name: (index + 1).toString()},
+          // {name: (index + 1).toString()},
           {name: paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1)},
           {name: paper.name, pdfPath: paper.pdfPath,},
           {name: str1 + str2 + str3},
@@ -67,7 +67,7 @@ class Publication extends Component {
         const str2 = paper.submittedTo;
         const str3 = paper.detail ? `, ${paper.detail}` : '';
         return [
-          {name: (index + 1).toString()},
+          // {name: (index + 1).toString()},
           {name: paper.authors.slice(0, -1).join(', ') + ' and ' + paper.authors.slice(-1)},
           {name: paper.name, pdfPath: paper.pdfPath,},
           {name: str1 + str2 + str3},
@@ -84,7 +84,7 @@ class Publication extends Component {
           <Grid item md={8} xs={10}>
             <Paper className={classes.paperPadding} style={{overflowX: 'auto'}} elevation={8}>
               <Typography variant='headline' gutterBottom paragraph>
-                PUBLICATION
+                Publication
               </Typography>
               <Typography variant='body1' gutterBottom paragraph>
                 Personal use of this material is permitted. However, permission to reprint/republish
@@ -115,7 +115,7 @@ class Publication extends Component {
                 <TableHead className={classes["primary" + "TableHeader"]}>
                   <TableRow>
                     {
-                      ["Id", "Authors", "Title", ""].map((prop, key) => {
+                      ["Authors", "Title", ""].map((prop, key) => {
                         return (
                           <TableCell
                             className={classes.tableCell + " " + classes.tableHeadCell}
